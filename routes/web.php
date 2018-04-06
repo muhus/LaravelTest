@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('s-admin', 'DefaultController@sAdmin');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
