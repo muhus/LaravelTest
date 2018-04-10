@@ -45,6 +45,8 @@ class LoginController extends Controller
             return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
         }elseif ($user->hasRole('sadmin')){
             return redirect()->action('DefaultController@sAdmin');
+        }elseif ($user->hasRole('user')){
+            return redirect()->action('DefaultController@users');
         }else {
             return redirect()->intended($this->redirectPath());
         }

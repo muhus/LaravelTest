@@ -27,4 +27,20 @@ class DefaultController extends Controller
             return view('welcome');
         }
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function users()
+    {
+        $user = Auth::user();
+
+        if($user != null && $user->hasRole('user')) {
+            return view('users');
+        }else{
+            return view('welcome');
+        }
+    }
 }
