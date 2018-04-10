@@ -14,9 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/logout', function (){
+    //Auth::Logout();
+    return view('welcome');
+});
 
 Route::get('s-admin', 'DefaultController@sAdmin');
+
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('s-admin', 'DefaultController@sAdmin');
+
+
