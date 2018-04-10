@@ -7,7 +7,7 @@
  */
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class DefaultController extends Controller
 
@@ -19,6 +19,12 @@ class DefaultController extends Controller
      */
     public function sAdmin()
     {
-        return view('s-admin');
+        $user = Auth::user();
+
+        if($user != null && $user->hasRole('sadmin')) {
+            return view('s-admin');
+        }else{
+            return view('welcome');
+        }
     }
 }

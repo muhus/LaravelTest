@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\VerifyUser;
 use Mail;
+use App\Role;
 use App\Mail\VerifyMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -78,6 +79,8 @@ class RegisterController extends Controller
             'user_id' => $user->id,
             'token' => str_random(40)
         ]);
+
+        //$user->roles()->attach(Role::where('name', 'user')->first());
 
         Mail::to($user->email)->send(new VerifyMail($user));
 

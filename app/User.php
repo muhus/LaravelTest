@@ -27,7 +27,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function verifyUser(){
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function verifyUser()
+    {
         return $this->hasOne('App\VerifyUser');
     }
 }
