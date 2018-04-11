@@ -1,4 +1,4 @@
-@extends('SBAdmin.main')
+@extends('SBAdmin.userMain')
 
 @section('content')
     <div class="container-fluid">
