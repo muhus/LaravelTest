@@ -33,6 +33,38 @@ class DefaultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function admin()
+    {
+        $user = Auth::user();
+
+        if($user != null && $user->hasRole('admin')) {
+            return view('admin');
+        }else{
+            return view('welcome');
+        }
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function manager()
+    {
+        $user = Auth::user();
+
+        if($user != null && $user->hasRole('manager')) {
+            return view('manager');
+        }else{
+            return view('welcome');
+        }
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function users()
     {
         $user = Auth::user();

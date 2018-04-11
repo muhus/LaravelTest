@@ -47,6 +47,10 @@ class LoginController extends Controller
             return redirect()->action('DefaultController@sAdmin');
         }elseif ($user->hasRole('user')){
             return redirect()->action('DefaultController@users');
+        }elseif ($user->hasRole('admin')){
+            return redirect()->action('DefaultController@admin');
+        }elseif ($user->hasRole('manager')){
+            return redirect()->action('DefaultController@manager');
         }else {
             return redirect()->intended($this->redirectPath());
         }
